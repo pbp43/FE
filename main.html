@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head> 
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>Nutritional Information at your fingertips</title>     
+	<link rel="stylesheet" href="main.css">
+	<link href='https://fonts.googleapis.com/css?family=Barlow Condensed' rel='stylesheet'>  
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+
+<body>
+<img hspace="25" src="searchpic.png" width="500" height="300"> 
+<button type="button" style= "align=right" onclick="location.href='login.html'">Logout</button>
+
+<p>NutritionHelper</p> <br> <br><br><br><br>
+
+
+<form class="example" action="search.html" style="margin:auto;max-width:600px">
+  <button type="submit">Search for an item!</i></button>
+</form>
+
+<form class="fav" action="fav.php" style="margin:auto;max-width:600px">
+<input type="text" placeholder = "Confirm Username" name = "username">
+<input type="text" placeholder="Favorite Food" name="item">
+  <button type="submit">Add to Favorites!</i></button>
+</form>
+
+ 
+</body>
+
+<?php
+	
+	error_reporting(E_ALL);	
+	ini_set('display_errors',1);
+	ini_set('log_errors',1);
+	
+	session_start();
+	setcookie(session_name(),'',time() - 7000 , '/');
+
+	if (isset($_SESSION['logged']) && $_SESSION['logged'] == true){
+		echo $_SESSION['username']; 
+		//$_SESSION['username'] = $username;
+	}
+	
+	else{
+		header("Location: login.html");
+	}
+
+?>
+
+</html>
+
+
+
+
